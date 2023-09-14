@@ -10,11 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-go@v2
+      - uses: actions/setup-go@v5
         with:
-          go-version: 1.15
+          go-version-file: go.mod
+          
 
       - run: go get -t -v ./...
       - run: go test -v -race ./...
@@ -24,7 +25,7 @@ jobs:
     needs: test
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -97,11 +98,11 @@ jobs:
             extension: '.exe'
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
-      - uses: actions/setup-go@v2
+      - uses: actions/setup-go@v4
         with:
-          go-version: 1.15
+          go-version-file: go.mod
 
       - name: Download go dependencies
         run: go get -t -v ./...
