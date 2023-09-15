@@ -98,7 +98,7 @@ jobs:
             extension: ".exe"
           - os: darwin
             arch: amd64
-          - os: darmin
+          - os: darwin
             arch: arm64
     steps:
       - name: Checkout
