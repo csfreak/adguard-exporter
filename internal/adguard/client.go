@@ -39,7 +39,7 @@ type Client struct {
 }
 
 // NewClient method initializes a new AdGuard  client.
-func NewClient(protocol, hostname, username, password, adport string, interval time.Duration, logLimit string, rdnsenabled bool) *Client {
+func NewClient(protocol, hostname, username, password, adport string, interval time.Duration, logLimit string, rdnsenabled bool, insecuretls bool) *Client {
 
 	temp, err := strconv.ParseInt(adport, 10, 16)
 	if err != nil {
@@ -56,7 +56,9 @@ func NewClient(protocol, hostname, username, password, adport string, interval t
 		interval: interval,
 		logLimit: logLimit,
 		httpClient: http.Client{
-			Transport: &http.Transport{TLSClientConfig: GetTlsConfig()},
+			Transport: &http.Transport{TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: insecuretls,
+			}},
 			CheckRedirect: func(req *http.Request, via []*http.Request) error {
 				return http.ErrUseLastResponse
 			},
@@ -261,12 +263,6 @@ func (c *Client) isUsingPassword() bool {
 
 func (c *Client) authenticateRequest(req *http.Request) {
 	req.SetBasicAuth(c.username, c.password)
-}
-
-func GetTlsConfig() *tls.Config {
-	return &tls.Config{
-		InsecureSkipVerify: true,
-	}
 }
 
 func isValidIp(ip string) bool {

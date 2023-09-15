@@ -17,30 +17,32 @@ import (
 
 // Config is the exporter CLI configuration.
 type Config struct {
-	AdguardProtocol  string        `config:"adguard_protocol"`
-	AdguardHostname  string        `config:"adguard_hostname"`
-	AdguardUsername  string        `config:"adguard_username"`
-	AdguardPassword  string        `config:"adguard_password"`
-	AdguardPort      string        `config:"adguard_port"`
-	ServerPort       string        `config:"server_port"`
-	Interval         time.Duration `config:"interval"`
-	LogLimit         string        `config:"log_limit"`
-	RDnsEnabled      bool          `config:"rdns_enabled"`
-	PasswordFromFile bool          `config:"password_from_file"`
+	AdguardProtocol       string        `config:"adguard_protocol"`
+	AdguardHostname       string        `config:"adguard_hostname"`
+	AdguardUsername       string        `config:"adguard_username"`
+	AdguardPassword       string        `config:"adguard_password"`
+	AdguardPort           string        `config:"adguard_port"`
+	ServerPort            string        `config:"server_port"`
+	Interval              time.Duration `config:"interval"`
+	LogLimit              string        `config:"log_limit"`
+	RDnsEnabled           bool          `config:"rdns_enabled"`
+	PasswordFromFile      bool          `config:"password_from_file"`
+	InsecureTLSSkipVerify bool          `config:"insecure_tls_skip_verify"`
 }
 
 func getDefaultConfig() *Config {
 	return &Config{
-		AdguardProtocol:  "http",
-		AdguardHostname:  "127.0.0.1",
-		AdguardUsername:  "",
-		AdguardPassword:  "",
-		AdguardPort:      "80",
-		ServerPort:       "9617",
-		Interval:         10 * time.Second,
-		LogLimit:         "1000",
-		RDnsEnabled:      true,
-		PasswordFromFile: false,
+		AdguardProtocol:       "http",
+		AdguardHostname:       "127.0.0.1",
+		AdguardUsername:       "",
+		AdguardPassword:       "",
+		AdguardPort:           "80",
+		ServerPort:            "9617",
+		Interval:              10 * time.Second,
+		LogLimit:              "1000",
+		RDnsEnabled:           true,
+		PasswordFromFile:      false,
+		InsecureTLSSkipVerify: false,
 	}
 }
 

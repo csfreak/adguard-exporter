@@ -228,6 +228,9 @@ scrape_configs:
 
 # Port to be used for the exporter
 -server_port string (optional) (default "9617")
+
+# Disable TLS verification
+-insecure_tls_skip_verify bool (optional) (default "false")
 ```
 
 ## Available Prometheus metrics
