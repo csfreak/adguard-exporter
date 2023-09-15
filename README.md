@@ -9,7 +9,7 @@ This is a Prometheus exporter for [AdguardHome](https://github.com/AdguardTeam/A
 It is based on the famous pihole-exporter [available here](https://github.com/eko/pihole-exporter/)
 It was forked from ebrianne/adguard-exporter, which is no longer available
 
-![Grafana dashboard](https://raw.githubusercontent.com/csfreak/adguard-exporter/master/grafana/dashboard.png)
+![Grafana dashboard](https://raw.githubusercontent.com/csfreak/adguard-exporter/main/grafana/dashboard.png)
 
 ## Prerequisites
 
