@@ -6,7 +6,6 @@ WORKDIR /tmp/adguard_exporter
 
 RUN apk --no-cache add git alpine-sdk
 COPY . .
-RUN GO111MODULE=on go mod vendor
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags '-s -w' -o adguard_exporter ./
 
 FROM scratch
