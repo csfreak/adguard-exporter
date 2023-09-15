@@ -1,6 +1,6 @@
 # AdguardHome Prometheus Exporter
 
-![Build/Push (master)](https://github.com/csfreak/adguard-exporter/workflows/Build/Push%20(master)/badge.svg?branch=master)
+![Build/Push (master)](https://github.com/csfreak/adguard-exporter/workflows/Build/Test%20(main)/badge.svg?branch=main)
 [![GoDoc](https://godoc.org/github.com/csfreak/adguard-exporter?status.png)](https://godoc.org/github.com/csfreak/adguard-exporter)
 [![GoReportCard](https://goreportcard.com/badge/github.com/csfreak/adguard-exporter)](https://goreportcard.com/report/github.com/csfreak/adguard-exporter)
 ![DockerPulls](https://img.shields.io/docker/pulls/csfreak/adguard-exporter)
@@ -22,7 +22,6 @@ It was forked from ebrianne/adguard-exporter, which is no longer available
 You can download the latest version of the binary built for your architecture here:
 
 * Architecture **i386** [
-[Darwin](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-darwin-386) /
 [FreeBSD](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-freebsd-386) /
 [Linux](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-linux-386) /
 [Windows](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-windows-386.exe)
@@ -37,7 +36,9 @@ You can download the latest version of the binary built for your architecture he
 [Linux](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-linux-arm)
 ]
 * Architecture **arm64** [
-[Linux](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-linux-arm64)
+[Linux](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-linux-arm64) /
+[Darwin](https://github.com/csfreak/adguard-exporter/releases/latest/download/adguard_exporter-darwin-arm64) 
+
 ]
 
 ### From sources
@@ -47,12 +48,6 @@ Optionally, you can download and build it from the sources. You have to retrieve
 $ go get -u github.com/csfreak/adguard-exporter
 # or
 $ git clone https://github.com/csfreak/adguard-exporter.git
-```
-
-Install the needed vendors:
-
-```
-$ GO111MODULE=on go mod vendor
 ```
 
 Then, build the binary (here, an example to run on Raspberry PI ARM architecture):
