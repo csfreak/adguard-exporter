@@ -41,7 +41,7 @@ type Client struct {
 // NewClient method initializes a new AdGuard  client.
 func NewClient(protocol, hostname, username, password, adport string, interval time.Duration, logLimit string, rdnsenabled bool) *Client {
 
-	temp, err := strconv.Atoi(adport)
+	temp, err := strconv.ParseInt(adport, 10, 16)
 	if err != nil {
 		log.Fatal(err)
 	}
