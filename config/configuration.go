@@ -22,6 +22,7 @@ type Config struct {
 	AdguardUsername       string        `config:"adguard_username"`
 	AdguardPassword       string        `config:"adguard_password"`
 	AdguardPort           string        `config:"adguard_port"`
+	AdguardIpAddr         string        `config:"adguard_ip_addr"`
 	ServerPort            string        `config:"server_port"`
 	Interval              time.Duration `config:"interval"`
 	LogLimit              string        `config:"log_limit"`
@@ -37,6 +38,7 @@ func getDefaultConfig() *Config {
 		AdguardUsername:       "",
 		AdguardPassword:       "",
 		AdguardPort:           "80",
+		AdguardIpAddr:         "",
 		ServerPort:            "9617",
 		Interval:              10 * time.Second,
 		LogLimit:              "1000",

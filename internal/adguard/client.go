@@ -1,6 +1,7 @@
 package adguard
 
 import (
+	"context"
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
@@ -39,7 +40,7 @@ type Client struct {
 }
 
 // NewClient method initializes a new AdGuard  client.
-func NewClient(protocol, hostname, username, password, adport string, interval time.Duration, logLimit string, rdnsenabled bool, insecuretls bool) *Client {
+func NewClient(protocol, hostname, username, password, adport string, interval time.Duration, logLimit string, rdnsenabled bool, insecuretls bool, ipOverride string) *Client {
 
 	temp, err := strconv.ParseInt(adport, 10, 16)
 	if err != nil {
@@ -56,9 +57,16 @@ func NewClient(protocol, hostname, username, password, adport string, interval t
 		interval: interval,
 		logLimit: logLimit,
 		httpClient: http.Client{
-			Transport: &http.Transport{TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: insecuretls,
-			}},
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{
+					InsecureSkipVerify: insecuretls,
+				},
+				DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
+					if ipOverride != "" {
+						addr = fmt.Sprintf("%s:%d", ipOverride, port)
+					}
+					return net.Dial(network, addr)
+				}},
 			CheckRedirect: func(req *http.Request, via []*http.Request) error {
 				return http.ErrUseLastResponse
 			},

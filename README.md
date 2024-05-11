@@ -65,6 +65,7 @@ docker run \
 -e 'adguard_username=admin' \
 -e 'adguard_password=mypassword' \
 -e 'adguard_port=' \ #optional if adguard is not using port 80 (http)/443 (https)
+-e 'adguard_ip_addr=' \ #optional if adguard has an IP address different from where hostname resolves (unusual)
 -e 'interval=10s' \
 -e 'log_limit=10000' \
 -e 'server_port=9617' \
@@ -117,6 +118,7 @@ services:
       - adguard_username=admin
       - adguard_password=/run/secrets/my-adguard-pass
       - adguard_port= #optional
+      - adguard_ip_addr= #optional
       - server_port=9617
       - interval=10s
       - log_limit=10000
@@ -150,6 +152,7 @@ services:
       - adguard_username=admin
       - adguard_password=/run/secrets/my-adguard-pass
       - adguard_port= #optional
+      - adguard_ip_addr= #optional
       - server_port=9617
       - interval=10s
       - log_limit=10000
@@ -222,6 +225,9 @@ scrape_configs:
 
 # Port to use to communicate with Adguard API
 -adguard_port string (optional)
+
+# IP address to use to communicate with Adguard API, if different from hostname
+-adguard_ip_addr string (optional)
 
 # Limit for the return log data
 -log_limit string (optional) (default "1000")
